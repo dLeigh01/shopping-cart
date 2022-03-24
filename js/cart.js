@@ -18,41 +18,50 @@ function renderCart() {
   showCart();
 }
 
-// TODO: Remove all of the rows (tr) in the cart table (tbody)
+// DONE: Remove all of the rows (tr) in the cart table (tbody)
 function clearCart() {
   let body = document.getElementsByTagName('tbody');
- 
-  // while(body.hasChildNodes()){
-  //   body.removeChild(body.firstChild);
-    
-  // }
+  body = body[0];
+
+  while(body.hasChildNodes()){
+    body.removeChild(body.firstChild);
+  }
 }
 
-// TODO: Fill in the <tr>'s under the <tbody> for each item in the cart
+// DONE: Fill in the <tr>'s under the <tbody> for each item in the cart
 function showCart() {
 
   // DONE: Find the table body
   let body = document.getElementsByTagName('tbody');
   body = body[0];
-  // TODO: Iterate over the items in the cart
-  let itemArray = [];
-  for(let i in cart.items){
-    itemArray = cart.items[i];
+  // DONE: Iterate over the items in the cart
+  let itemName = [];
+  let itemQuantity = [];
 
+  for(let i in cart.items){
+    itemName[i] = cart.items[i].product;
+    itemQuantity[i] = cart.items[i].quantity;
+    console.log(cart.items[i]);
   }
-  // DONE: Create a TR
   
-  let elemTr = document.createElement('tr');
-  
-  
-  // TODO: Create a TD for the delete link, quantity,  and the item
-  let itemTd = document.createElement('td');
-  itemTd.textContent = itemArray[1];
-  itemTd.id = itemArray[1];
-  
-  // TODO: Add the TR to the TBODY and each of the TD's to the TR
-  body.appendChild(elemTr);
-  console.log(itemTd);
+  for(let i in cart.items) {
+    // DONE: Create a TR
+    let elemTr = document.createElement('tr');
+
+    // DONE: Create a TD for the delete link, quantity,  and the item
+    let deleteTd = document.createElement('td');
+    let quantityTd = document.createElement('td');
+    let itemTd = document.createElement('td');
+    deleteTd.textContent = 'x';
+    quantityTd.textContent = itemQuantity[i];
+    itemTd.textContent = itemName[i];
+
+    // DONE: Add the TR to the TBODY and each of the TD's to the TR
+    body.appendChild(elemTr);
+    elemTr.appendChild(deleteTd);
+    elemTr.appendChild(quantityTd);
+    elemTr.appendChild(itemTd);
+  }
 }
 
 function removeItemFromCart(event) {
