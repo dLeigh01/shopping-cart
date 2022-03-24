@@ -20,6 +20,8 @@ Cart.prototype.saveToLocalStorage = function() {
 
 Cart.prototype.removeItem = function(item) {
   // TODO: Fill in this instance method to remove one item from the cart.
+  let product = item;
+  product
   // Note: You will have to decide what kind of parameter to pass in here!
 };
 
