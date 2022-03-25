@@ -41,7 +41,7 @@ function showCart() {
   for(let i in cart.items){
     itemName[i] = cart.items[i].product;
     itemQuantity[i] = cart.items[i].quantity;
-    console.log(cart.items[i]);
+
   }
   
   for(let i in cart.items) {
@@ -65,11 +65,16 @@ function showCart() {
 }
 
 function removeItemFromCart(event) {
-  let rmvItem = event.target.id
+  let rmvItem = event.target.parentElement;
+  console.log(rmvItem.parentElement);
 
-  // TODO: When a delete link is clicked, use cart.removeItem to remove the correct item
+  // let index = event.target.nthChild
+  // DONE: When a delete link is clicked, use cart.removeItem to remove the correct item
+//  if (!=
+  cart.removeItem(rmvItem);
 
   // TODO: Save the cart back to local storage
+  cart.saveToLocalStorage();
   // TODO: Re-draw the cart table
 
 }
