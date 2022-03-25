@@ -16,12 +16,21 @@ Cart.prototype.saveToLocalStorage = function() {
   // DONE: Fill in this instance method to save the contents of the cart to localStorage
   let local = JSON.stringify(this.items);
   localStorage.setItem('cart', local);
+
+
 };
 
 Cart.prototype.removeItem = function(item) {
-  // TODO: Fill in this instance method to remove one item from the cart.
+  // DONE: Fill in this instance method to remove one item from the cart.
+  
   let product = item;
-  product
+  console.log(item);
+  
+  while(product.hasChildNodes()){
+    product.removeChild(product.firstChild);
+  }
+  this.items.splice(item, );
+  
   // Note: You will have to decide what kind of parameter to pass in here!
 };
 
